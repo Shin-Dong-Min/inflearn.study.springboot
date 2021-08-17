@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping(value = "/")
@@ -17,18 +18,21 @@ public class HomeController {
     private UserService userService;
 
     @GetMapping("/")
-    public String homeView() {
-        return "pages/home";
+    public ModelAndView homeView() {
+        ModelAndView modelAndView = new ModelAndView("pages/home");
+        return modelAndView;
     }
 
     @GetMapping("/login")
-    public String loginView() {
-        return "pages/login";
+    public ModelAndView loginView() {
+        ModelAndView modelAndView = new ModelAndView("pages/login");
+        return modelAndView;
     }
 
     @GetMapping("/signup")
-    public String signupView() {
-        return "pages/signup";
+    public ModelAndView signupView() {
+        ModelAndView modelAndView = new ModelAndView("pages/signup");
+        return modelAndView;
     }
 
     @PostMapping("/signup")
@@ -39,18 +43,21 @@ public class HomeController {
 
     @PreAuthorize("hasRole('ROLE_MEMBER')")
     @GetMapping("/user/info")
-    public String userInfoView() {
-        return "pages/user_info";
+    public ModelAndView userInfoView() {
+        ModelAndView modelAndView = new ModelAndView("pages/user_info");
+        return modelAndView;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/admin")
-    public String adminView() {
-        return "pages/admin";
+    public ModelAndView adminView() {
+        ModelAndView modelAndView = new ModelAndView("pages/admin");
+        return modelAndView;
     }
 
     @GetMapping("/denied")
-    public String deniedView() {
-        return "pages/denied";
+    public ModelAndView deniedView() {
+        ModelAndView modelAndView = new ModelAndView("pages/denied");
+        return modelAndView;
     }
 }
